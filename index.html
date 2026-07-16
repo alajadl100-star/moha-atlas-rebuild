@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1A312C">
+  <title>Moha Atlas | متجر العطور</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-row">
+    <button id="menuBtn" class="menu-btn">☰</button>
+    <a href="#" class="brand" data-home>
+      <span class="brand-mark">MA</span>
+      <span>MOHA ATLAS</span>
+    </a>
+    <div class="header-actions">
+      <button id="favoritesBtn">♡ <span id="favoritesCount">0</span></button>
+      <a id="headerWhatsapp" target="_blank">واتساب</a>
+    </div>
+  </div>
+
+  <div class="search-row">
+    <input id="searchInput" type="search" placeholder="ابحث باسم العطر، البراند، النوتة أو الحجم">
+    <button id="clearSearch">مسح</button>
+  </div>
+
+  <nav class="desktop-nav">
+    <button data-main="الكل">الكل</button>
+
+    <div class="nav-parent">
+      <button>نيش</button>
+      <div class="dropdown">
+        <button data-type="نيش" data-sub="الكل">الكل</button>
+        <button data-type="نيش" data-sub="البراندات">البراندات</button>
+        <button data-type="نيش" data-sub="النوتات">النوتات</button>
+      </div>
+    </div>
+
+    <div class="nav-parent">
+      <button>ديزاينر</button>
+      <div class="dropdown">
+        <button data-type="ديزاينر" data-sub="الكل">الكل</button>
+        <button data-type="ديزاينر" data-sub="البراندات">البراندات</button>
+        <button data-type="ديزاينر" data-sub="النوتات">النوتات</button>
+      </div>
+    </div>
+
+    <div class="nav-parent">
+      <button>بديل</button>
+      <div class="dropdown">
+        <button data-type="بديل" data-sub="الكل">الكل</button>
+        <button data-type="بديل" data-sub="البراندات">البراندات</button>
+        <button data-type="بديل" data-sub="النوتات">النوتات</button>
+      </div>
+    </div>
+
+    <button data-gender="رجالي">رجالي</button>
+    <button data-gender="نسائي">نسائي</button>
+    <button data-gender="يونيسكس">يونيسكس</button>
+    <button data-flag="new">جديد</button>
+    <button data-flag="offer" class="offer-link">العروض</button>
+  </nav>
+</header>
+
+<aside id="mobileDrawer" class="mobile-drawer">
+  <div class="drawer-head">
+    <strong>القائمة</strong>
+    <button id="closeDrawer">×</button>
+  </div>
+
+  <button data-main="الكل">الكل</button>
+
+  <details>
+    <summary>نيش</summary>
+    <button data-type="نيش" data-sub="الكل">الكل</button>
+    <button data-type="نيش" data-sub="البراندات">البراندات</button>
+    <button data-type="نيش" data-sub="النوتات">النوتات</button>
+  </details>
+
+  <details>
+    <summary>ديزاينر</summary>
+    <button data-type="ديزاينر" data-sub="الكل">الكل</button>
+    <button data-type="ديزاينر" data-sub="البراندات">البراندات</button>
+    <button data-type="ديزاينر" data-sub="النوتات">النوتات</button>
+  </details>
+
+  <details>
+    <summary>بديل</summary>
+    <button data-type="بديل" data-sub="الكل">الكل</button>
+    <button data-type="بديل" data-sub="البراندات">البراندات</button>
+    <button data-type="بديل" data-sub="النوتات">النوتات</button>
+  </details>
+
+  <button data-gender="رجالي">رجالي</button>
+  <button data-gender="نسائي">نسائي</button>
+  <button data-gender="يونيسكس">يونيسكس</button>
+  <button data-flag="new">جديد</button>
+  <button data-flag="offer">العروض</button>
+</aside>
+<div id="drawerOverlay" class="drawer-overlay"></div>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <p>MOHA ATLAS</p>
+      <h1>اكتشف عطرك القادم</h1>
+      <span>تصفح سريع، منتجات مختارة، وسعر نهائي واضح.</span>
+      <a href="#catalog">تصفح المتجر</a>
+    </div>
+    <div class="hero-art">
+      <i></i><i></i><i></i>
+    </div>
+  </section>
+
+  <section id="homeSections" class="home-sections">
+    <div class="home-block">
+      <div class="section-head">
+        <div><span>وصل حديثًا</span><h2>جديد</h2></div>
+        <button data-show-all="new">عرض الكل</button>
+      </div>
+      <div id="homeNew" class="product-strip"></div>
+    </div>
+
+    <div class="home-block">
+      <div class="section-head">
+        <div><span>لفترة محدودة</span><h2>العروض</h2></div>
+        <button data-show-all="offer">عرض الكل</button>
+      </div>
+      <div id="homeOffers" class="product-strip"></div>
+    </div>
+
+    <div class="home-block">
+      <div class="section-head">
+        <div><span>مختارات راقية</span><h2>نيش</h2></div>
+        <button data-show-all="نيش">عرض الكل</button>
+      </div>
+      <div id="homeNiche" class="product-strip"></div>
+    </div>
+
+    <div class="home-block">
+      <div class="section-head">
+        <div><span>أسماء عالمية</span><h2>ديزاينر</h2></div>
+        <button data-show-all="ديزاينر">عرض الكل</button>
+      </div>
+      <div id="homeDesigner" class="product-strip"></div>
+    </div>
+
+    <div class="home-block">
+      <div class="section-head">
+        <div><span>قيمة ممتازة</span><h2>بديل</h2></div>
+        <button data-show-all="بديل">عرض الكل</button>
+      </div>
+      <div id="homeAlternative" class="product-strip"></div>
+    </div>
+  </section>
+
+  <section id="filterPanel" class="filter-panel" hidden>
+    <div class="section-head">
+      <div><span id="filterEyebrow"></span><h2 id="filterTitle"></h2></div>
+      <button id="closeFilter">إغلاق</button>
+    </div>
+    <div id="filterOptions" class="chips"></div>
+  </section>
+
+  <section id="catalog" class="catalog">
+    <div class="catalog-head">
+      <div>
+        <span>الكتالوج</span>
+        <h2 id="catalogTitle">كل العطور</h2>
+      </div>
+
+      <div class="catalog-actions">
+        <strong><span id="productCount">0</span> منتج</strong>
+        <select id="sortSelect">
+          <option value="default">الترتيب الافتراضي</option>
+          <option value="price-asc">السعر: الأقل أولًا</option>
+          <option value="price-desc">السعر: الأعلى أولًا</option>
+          <option value="name">الاسم</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="statusMessage" class="status">جارٍ تحميل المنتجات...</div>
+    <div id="productGrid" class="product-grid" hidden></div>
+    <button id="loadMoreBtn" class="load-more" hidden>عرض المزيد</button>
+  </section>
+</main>
+
+<div id="productModal" class="modal">
+  <div class="modal-overlay" data-close-modal></div>
+  <div class="modal-card">
+    <button class="modal-close" data-close-modal>×</button>
+    <div class="modal-layout">
+      <div class="modal-image"><img id="modalImage"></div>
+      <div class="modal-info">
+        <p id="modalBrand" class="product-brand"></p>
+        <h2 id="modalName"></h2>
+        <div id="modalMeta" class="meta"></div>
+        <div class="modal-price"><span id="modalPrice"></span> ر.ق</div>
+        <button id="modalFavorite" class="favorite-wide">أضف إلى المفضلة</button>
+        <a id="modalWhatsapp" class="buy-button" target="_blank">اطلب عبر واتساب</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>MOHA ATLAS</strong>
+  <span>متجر عطور بهوية خاصة وتجربة سهلة.</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
