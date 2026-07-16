@@ -288,3 +288,7 @@ footer button,footer a{border:0;background:transparent;color:#DDE8E3;padding:0}
   .product-detail{grid-template-columns:1fr}.detail-info h2{font-size:27px}
   footer{grid-template-columns:1fr 1fr}
 }
+.price-block{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:12px 0}
+.old-price{color:var(--muted);text-decoration:line-through;font-size:14px}
+.discount-badge{background:#B63737;color:#fff;font-size:10px;font-weight:900;padding:4px 7px;border-radius:999px}
+.detail-old-price{color:var(--muted);text-decoration:line-through;margin-bottom:4px}
