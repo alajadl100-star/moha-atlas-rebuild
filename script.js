@@ -49,6 +49,9 @@ function normalize(data){
     size:row.size_ml??"",
     concentration:String(row.concentration||""),
     price:Number(row.price_qar)||0,
+    oldPrice:Number(row.old_price_qar)||0,
+    discountPercent:Number(row.discount_percent)||0,
+    profit:Number(row.profit_qar)||0,
     available:row.available!==false,
     image:String(row.image_url||""),
     category:String(row.category||"غير مصنف").trim(),
@@ -77,7 +80,7 @@ function whatsappLink(p){
 المنتج: ${p.brand} ${p.name}
 التركيز: ${p.concentration||"-"}
 الحجم: ${p.size?`${p.size} ml`:"-"}
-السعر: ${numberFormat(p.price)} ر.ق
+السعر: ${numberFormat(p.price)} ر.ق${p.oldPrice&&p.oldPrice>p.price?`\nالسعر السابق: ${numberFormat(p.oldPrice)} ر.ق`:""}
 رقم المنتج: ${p.id}`;
   return`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
@@ -96,7 +99,11 @@ function card(p){
         ${p.concentration&&p.concentration!=="UNKNOWN"?`<span>${p.concentration}</span>`:""}
         ${p.size?`<span>${p.size} ml</span>`:""}
       </div>
-      <div class="product-price">${numberFormat(p.price)} ر.ق</div>
+      <div class="price-block">
+      ${p.oldPrice && p.oldPrice > p.price ? `<span class="old-price">${numberFormat(p.oldPrice)} ر.ق</span>` : ""}
+      <span class="product-price">${numberFormat(p.price)} ر.ق</span>
+      ${p.discountPercent > 0 ? `<span class="discount-badge">-${p.discountPercent}%</span>` : ""}
+    </div>
       <a class="card-buy" href="${whatsappLink(p)}" target="_blank">اطلب عبر واتساب</a>
     </div>
   </article>`;
@@ -227,6 +234,15 @@ function openProduct(p){
   $("#modalBrand").textContent=p.brand;
   $("#modalName").textContent=p.name;
   $("#modalPrice").textContent=numberFormat(p.price);
+  let oldPriceNode=document.getElementById("modalOldPrice");
+  if(!oldPriceNode){
+    oldPriceNode=document.createElement("div");
+    oldPriceNode.id="modalOldPrice";
+    oldPriceNode.className="detail-old-price";
+    document.querySelector(".detail-price").before(oldPriceNode);
+  }
+  oldPriceNode.textContent=(p.oldPrice&&p.oldPrice>p.price)?`${numberFormat(p.oldPrice)} ر.ق`:"";
+  oldPriceNode.hidden=!(p.oldPrice&&p.oldPrice>p.price);
   $("#modalMeta").innerHTML=`
     ${p.category&&p.category!=="غير مصنف"?`<span>${p.category}</span>`:""}
     ${p.gender?`<span>${p.gender}</span>`:""}
